@@ -1,3 +1,8 @@
+/* eslint-disable no-console */
+/* eslint-disable prefer-destructuring */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-unresolved */
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/js/fontawesome';
@@ -59,7 +64,9 @@ function getMealRecipe(e) {
   e.preventDefault();
   if (e.target.classList.contains('recipe-btn')) {
     const mealItem = e.target.parentElement.parentElement;
-    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
+    fetch(
+      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`,
+    )
       .then((response) => response.json())
       .then((data) => mealRecipeModal(data.meals));
   }
@@ -92,7 +99,6 @@ const logoFooter = document.getElementById('img-logo-footer');
 logo.src = bonAppetitLogo;
 logoFooter.src = bonAppetitLogo;
 
-
 fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
   .then((res) => res.json())
   .then((data) => {
@@ -106,18 +112,23 @@ fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
     });
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < navBarCategories.children.length; i++) {
-      navBarCategories.children[i].children[0].addEventListener('click', (e) => {
-        e.preventDefault();
-        fetchAPI(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${e.target.textContent}`);
-      });
+      navBarCategories.children[i].children[0].addEventListener(
+        'click',
+        (e) => {
+          e.preventDefault();
+          fetchAPI(
+            `https://www.themealdb.com/api/json/v1/1/filter.php?c=${e.target.textContent}`,
+          );
+        },
+      );
     }
   });
 
-  const suggestionDuChef = document.getElementById('suggestion-du-chef');
-  suggestionDuChef.addEventListener('click', (e) => {
-      e.preventDefault();
-      fetchAPI('https://www.themealdb.com/api/json/v1/1/random.php');
-    });
+const suggestionDuChef = document.getElementById('suggestion-du-chef');
+suggestionDuChef.addEventListener('click', (e) => {
+  e.preventDefault();
+  fetchAPI('https://www.themealdb.com/api/json/v1/1/random.php');
+});
 
 // event listeners
 searchBtn.addEventListener('click', getMealList);
