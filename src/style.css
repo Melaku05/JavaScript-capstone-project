@@ -1,28 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 
 @font-face {
-  font-family: "Proxima Nova";
+  font-family: 'Proxima Nova';
   font-style: normal;
   font-weight: normal;
-  src: url("./fonts/proxima-nova-light.otf") format("opentype");
+  src: url('./fonts/proxima-nova-light.otf') format('opentype');
 }
 
 :root {
-  --font-family-sans-serif:
-    "Proxima Nova",
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    roboto,
-    "Helvetica Neue",
-    arial,
-    "Noto Sans",
-    "Liberation Sans",
-    sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol",
-    "Noto Color Emoji";
+  --font-family-sans-serif: 'Proxima Nova', system-ui, -apple-system, 'Segoe UI',
+    roboto, 'Helvetica Neue', arial, 'Noto Sans', 'Liberation Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --primary-color: #1c78c0;
   --secondary-color: #8ed6fb;
   --background-color: #d5ebf6;
@@ -36,7 +24,7 @@ body {
   font-weight: 300;
   font-size: 1.05rem;
   line-height: 1.6;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 header {
@@ -161,8 +149,6 @@ a.logo:hover {
   outline: 0;
   border: 1px solid var(--tenne-tawny);
   color: var(--tenne-tawny);
-  border-top-left-radius: 2rem;
-  border-bottom-left-radius: 2rem;
 }
 
 .search-control::placeholder {
@@ -465,6 +451,12 @@ form {
   justify-content: space-around;
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.author {
+  background: #fff;
+  width: 97%;
+  text-align: center;
 }
 
 /* Media Queries */
