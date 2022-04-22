@@ -23,7 +23,8 @@ function mealDetailsModal(meal) {
     i += 1;
   }
   let ingredientsHTML = '';
-  for (let i = 0; i < ingredient.length; i += 1) {
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < ingredient.length; i++) {
     ingredientsHTML += `<li><span>${ingredient[i]}</span>: <span>${measure[i]}</span></li>`;
   }
   const youTubeLink = meal.strYoutube.replace('https://www.youtube.com/watch?v=', 'https://www.youtube.com/embed/');
@@ -67,9 +68,7 @@ function mealDetailsModal(meal) {
             </form>
           </div>
         </div>
-        <a href="${meal.strSource}" class="detail-source" target="_blank">
-          Source<sup><i class="fas fa-external-link-alt fa-xs"></i></sup>
-        </a>
+        <a href="${meal.strSource} class="detail-source">Source</a>
     `;
   mealDetailsContent.innerHTML = html;
   mealDetailsContent.parentElement.classList.add('showRecipe');
@@ -79,10 +78,10 @@ function mealDetailsModal(meal) {
   const submitComment = document.getElementById('submit-comment');
   const userNameInput = document.getElementById('user-name');
   const userOpinionInput = document.getElementById('user-opinion');
-  submitComment.addEventListener('click', async (e) => {
+  submitComment.addEventListener('click', (e) => {
     e.preventDefault();
     if (userNameInput.value.trim() && userOpinionInput.value.trim()) {
-      await postComment(meal.idMeal, userNameInput.value.trim(), userOpinionInput.value.trim());
+      postComment(meal.idMeal, userNameInput.value.trim(), userOpinionInput.value.trim());
       userNameInput.value = '';
       userOpinionInput.value = '';
       getComments(meal.idMeal);

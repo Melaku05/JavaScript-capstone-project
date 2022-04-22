@@ -1,5 +1,5 @@
 import { renderLikes } from './render-likes';
-import commentsCounter from './comments-counter';
+import { renderComments, renderNoComments } from './render-comments';
 
 const appId = 'emZFdA0IO3Wtnd0ZXf1j';
 
@@ -12,7 +12,8 @@ export const postLike = async (idMeal) => {
     headers: {
       'Content-Type': 'application/json; charset=UTF-8',
     },
-  });
+  })
+    .catch((error) => console.error(error));
 };
 
 export const getLikes = async () => {
@@ -23,15 +24,20 @@ export const getLikes = async () => {
     },
   })
     .then((res) => res.json())
-    .then((data) => renderLikes(data));
+    .then((data) => renderLikes(data))
+    .catch((error) => console.error(error));
 };
 
 export const postComment = async (idMeal, username, comment) => {
+  console.log(idMeal);
+  console.log(username);
+  console.log(comment);
   await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appId}/comments`, {
     method: 'POST',
     body: new URLSearchParams({ item_id: idMeal, username, comment }),
   })
-    .then((res) => res.text());
+    .then((res) => res.text())
+    .then((text) => console.log(text));
 };
 
 export const getComments = async (idMeal) => {
@@ -43,5 +49,11 @@ export const getComments = async (idMeal) => {
     redirect: 'follow',
   })
     .then((res) => res.json())
-    .then((comments) => commentsCounter(comments));
+    .then((comments) => {
+      if (comments.length > 0) {
+        renderComments(comments);
+      } else {
+        renderNoComments();
+      }
+    });
 };
