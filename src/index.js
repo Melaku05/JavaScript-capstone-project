@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 /* eslint-disable no-use-before-define */
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,9 +18,7 @@ const queryOptions = {
   Id: 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=',
 };
 let selectedQuery = 'Ingredients';
-const favoriteMeals = localStorage.favoriteMeals
-  ? JSON.parse(localStorage.favoriteMeals)
-  : [];
+const favoriteMeals = localStorage.favoriteMeals ? JSON.parse(localStorage.favoriteMeals) : [];
 
 // get meal list that matches with the ingredients
 const getMealList = (e) => {
@@ -48,16 +45,10 @@ fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
     });
     // eslint-disable-next-line no-plusplus
     for (let i = 0; i < navBarCategories.children.length; i++) {
-      navBarCategories.children[i].children[0].addEventListener(
-        'click',
-        (e) => {
-          e.preventDefault();
-          fetchAPI(
-            `https://www.themealdb.com/api/json/v1/1/filter.php?c=${e.target.textContent}`,
-            favoriteMeals,
-          );
-        },
-      );
+      navBarCategories.children[i].children[0].addEventListener('click', (e) => {
+        e.preventDefault();
+        fetchAPI(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${e.target.textContent}`, favoriteMeals);
+      });
     }
   });
 

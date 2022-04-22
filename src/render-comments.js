@@ -1,15 +1,9 @@
-/* eslint-disable import/no-unresolved */
-
 /* eslint-disable import/prefer-default-export */
 import pluralize from 'pluralize';
 
 export const renderComments = (comments) => {
   const commentsContainer = document.getElementById('comments');
-  commentsContainer.innerHTML = `<h3>${pluralize(
-    'comment',
-    comments.length,
-    true,
-  )}</h3>`;
+  commentsContainer.innerHTML = `<h3>${pluralize('comment', comments.length, true)}</h3>`;
   comments.reverse().forEach((comment) => {
     commentsContainer.innerHTML += `
       <div class="comment-details">

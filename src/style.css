@@ -1,21 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 
 @font-face {
-  font-family: 'Proxima Nova';
+  font-family: "Proxima Nova";
   font-style: normal;
   font-weight: normal;
-  src: url('./fonts/proxima-nova-light.otf') format('opentype');
+  src: url("./fonts/proxima-nova-light.otf") format("opentype");
 }
 
 :root {
-  --font-family-sans-serif: 'Proxima Nova', system-ui, -apple-system, 'Segoe UI',
-    roboto, 'Helvetica Neue', arial, 'Noto Sans', 'Liberation Sans', sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-family-sans-serif:
+    "Proxima Nova",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    roboto,
+    "Helvetica Neue",
+    arial,
+    "Noto Sans",
+    "Liberation Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
   --primary-color: #1c78c0;
   --secondary-color: #8ed6fb;
   --background-color: #d5ebf6;
   --tenne-tawny: #d65108;
-  --tenne-tawny-light: #ff7d38;
+  --tenne-tawny-light: #ff3838de;
   --tenne-tawny-dark: #b54507;
 }
 
@@ -24,7 +36,7 @@ body {
   font-weight: 300;
   font-size: 1.05rem;
   line-height: 1.6;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 header {
@@ -49,6 +61,27 @@ a.logo:hover {
 
 .navbar-nav {
   font-size: 1.25rem;
+}
+
+.recipe-link a {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: all 0.4s linear;
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -ms-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+}
+
+.author a {
+  text-decoration: none;
+  color: var(--tenne-tawny-dark);
+  font-weight: bold;
+}
+
+.recipe-link a:hover {
+  opacity: 0.8;
 }
 
 #nav a {
@@ -353,22 +386,6 @@ a.detail-source:hover {
   margin: 1.4rem 0;
 }
 
-/* stylelint-disable */
-.recipe-link a {
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: 700;
-  transition: all 0.4s linear;
-  -webkit-transition: all 0.4s linear;
-  -moz-transition: all 0.4s linear;
-  -ms-transition: all 0.4s linear;
-  -o-transition: all 0.4s linear;
-}
-
-.recipe-link a:hover {
-  opacity: 0.8;
-}
-
 .ingredients-list {
   list-style: none;
 }
@@ -448,12 +465,6 @@ form {
   justify-content: space-around;
   padding-top: 10px;
   padding-bottom: 10px;
-}
-
-.author a {
-  text-decoration: none;
-  color: var(--tenne-tawny-dark);
-  font-weight: bold;
 }
 
 /* Media Queries */
