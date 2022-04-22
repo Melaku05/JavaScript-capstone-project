@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import pluralize from 'pluralize';
 
 const commentsCounter = (comments) => {
