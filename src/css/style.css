@@ -116,7 +116,8 @@ footer {
 .heart {
   width: 100px;
   height: 100px;
-  background: url('https://cssanimation.rocks/images/posts/steps/heart.png')
+  background: 
+    url('https://cssanimation.rocks/images/posts/steps/heart.png')
     no-repeat;
   background-position: 0 0;
   cursor: pointer;
