@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import './css/style.css';
 import './css/comment.css';
 import getData, { addLikes, likeCount } from './js/api';
@@ -10,7 +11,7 @@ document.addEventListener('click', async (e) => {
     e.target.classList.toggle('is-active');
     const id = Number(e.target.id);
     const like = Number(
-      e.target.nextSibling.textContent.match(/[0-9]/g).join(''),
+      e.target.nextSibling.textContent.match(/[0-9]/g).join('')
     );
     e.target.nextSibling.textContent = `${like + 1} likes`;
     await addLikes(id);
