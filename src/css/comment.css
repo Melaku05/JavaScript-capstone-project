@@ -11,7 +11,7 @@
 }
 
 h2 {
-  margin-left: 275px;
+  margin-left: 125px;
   padding-top: 30px;
 }
 
@@ -33,12 +33,14 @@ h2 {
 }
 
 .comments {
-  margin-left: 90px;
+  margin-left: 40%;
+  margin-bottom: 3rem;
   list-style-type: none;
 }
 
 .comment-title {
-  margin-left: 90px;
+  text-align: center;
+  margin-bottom: 2rem;
   padding-top: 30px;
 }
 
@@ -57,7 +59,7 @@ h2 {
   flex-direction: column;
   gap: 25px;
   margin-bottom: 20px;
-  margin-left: 130px;
+  margin-left: 430px;
 }
 
 .com-form input,
