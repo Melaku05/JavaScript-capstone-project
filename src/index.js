@@ -1,75 +1,54 @@
-/* eslint-disable no-use-before-define */
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@fortawesome/fontawesome-free/js/fontawesome';
-import '@fortawesome/fontawesome-free/js/solid';
-import '@fortawesome/fontawesome-free/js/regular';
-import '@fortawesome/fontawesome-free/js/brands';
-import './style.css';
-import bonAppetitLogo from './img/BonAppetit-Logo-tenne-tawny-dark.svg';
-import { fetchAPI } from './mealDB';
+/* eslint-disable comma-dangle */
+import './css/style.css';
+import './css/comment.css';
+import getData, { addLikes, likeCount } from './js/api';
+import createCardItem from './js/createCardItem';
+import displayTvShownumbers from './js/itemsCounter';
+import enableComments from './js/CommentPopup';
 
-const searchBtn = document.getElementById('search-btn');
-const queryOptions = {
-  Ingredient: 'https://www.themealdb.com/api/json/v1/1/filter.php?i=',
-  'Meal name': 'https://www.themealdb.com/api/json/v1/1/search.php?s=',
-  Area: 'https://www.themealdb.com/api/json/v1/1/filter.php?a=',
-  'First letter': 'https://www.themealdb.com/api/json/v1/1/search.php?f=',
-  Id: 'https://www.themealdb.com/api/json/v1/1/lookup.php?i=',
+document.addEventListener('click', async (e) => {
+  if (e.target.matches('.heart')) {
+    e.target.classList.toggle('is-active');
+    const id = Number(e.target.id);
+    const like = Number(
+      e.target.nextSibling.textContent.match(/[0-9]/g).join('')
+    );
+    e.target.nextSibling.textContent = `${like + 1} likes`;
+    await addLikes(id);
+  }
+});
+
+const loading = () => {
+  const cardsContainer = document.querySelector('.grid-cards-container');
+  const loadDiv = document.createElement('div');
+  const mask = document.createElement('div');
+  loadDiv.classList.add('loading');
+  mask.classList.add('mask');
+  cardsContainer.append(mask, loadDiv);
 };
-let selectedQuery = 'Ingredients';
-const favoriteMeals = localStorage.favoriteMeals ? JSON.parse(localStorage.favoriteMeals) : [];
 
-// get meal list that matches with the ingredients
-const getMealList = (e) => {
-  e.preventDefault();
-  const searchInputTxt = document.getElementById('search-input').value.trim();
-  fetchAPI(`${queryOptions[selectedQuery]}${searchInputTxt}`, favoriteMeals);
+const removeLoding = () => {
+  document.querySelector('.loading').remove();
+  document.querySelector('.mask').remove();
 };
 
-const logo = document.getElementById('img-logo');
-const logoFooter = document.getElementById('img-logo-footer');
-logo.src = bonAppetitLogo;
-logoFooter.src = bonAppetitLogo;
-
-fetch('https://www.themealdb.com/api/json/v1/1/categories.php')
-  .then((res) => res.json())
-  .then((data) => {
-    const navBarCategories = document.getElementById('nav-categories');
-    data.categories.forEach((category) => {
-      navBarCategories.innerHTML += `
-        <li class="nav-item">
-          <a class="nav-link" href="#">${category.strCategory}</a>
-        </li>
-      `;
-    });
-    // eslint-disable-next-line no-plusplus
-    for (let i = 0; i < navBarCategories.children.length; i++) {
-      navBarCategories.children[i].children[0].addEventListener('click', (e) => {
-        e.preventDefault();
-        fetchAPI(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${e.target.textContent}`, favoriteMeals);
-      });
+const renderItems = async () => {
+  loading();
+  const itemsData = await getData();
+  displayTvShownumbers(itemsData);
+  removeLoding();
+  const likes = await likeCount();
+  for (let i = 0; i < itemsData.length; i += 1) {
+    let numLikes = 0;
+    numLikes = likes.filter((like) => like.item_id === itemsData[i].id);
+    if (numLikes.length > 0) {
+      createCardItem(itemsData[i], numLikes[0].likes);
+    } else {
+      createCardItem(itemsData[i], 0);
     }
-  });
+  }
+};
 
-const suggestionDuChef = document.getElementById('suggestion-du-chef');
-suggestionDuChef.addEventListener('click', (e) => {
-  e.preventDefault();
-  fetchAPI('https://www.themealdb.com/api/json/v1/1/random.php', favoriteMeals);
+renderItems().then(() => {
+  enableComments();
 });
-
-// event listeners
-searchBtn.addEventListener('click', getMealList);
-const ulQueries = document.querySelector('#drop-down-queries');
-Object.keys(queryOptions).forEach((queryOption) => {
-  ulQueries.innerHTML += `<li><a class="dropdown-item query-type" href="#">${queryOption}</a></li>`;
-});
-
-const queryTypes = document.querySelectorAll('.query-type');
-// eslint-disable-next-line no-plusplus
-for (let i = 0; i < queryTypes.length; i++) {
-  // eslint-disable-next-line no-loop-func
-  queryTypes[i].addEventListener('click', () => {
-    selectedQuery = queryTypes[i].textContent;
-  });
-}

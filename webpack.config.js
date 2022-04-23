@@ -1,3 +1,4 @@
+/*eslint-disable */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -6,7 +7,7 @@ module.exports = {
   entry: './src/index.js',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist',
+    static: './dist',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -31,6 +32,18 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+      {
+        test: /\.png$/,
+        use: 'file-loader'
       },
     ],
   },

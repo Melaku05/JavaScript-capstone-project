@@ -1,20 +1,20 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# JavaScript capstone project
+# Project Name
 
-The leaderboard website displays scores submitted by different players. It also allows you to submit your score. All data is preserved on external API.
+Gallerioni movies
 
-# Screen Shots
+> Gallerioni movies is an interactive movie streaming website were movie lovers interact with movies my commenting and liking.
 
-> Comming Soon.
+## Built With
 
-## Built With &hearts;
+- Major languages
 
-- HTML
-- CSS
-- JavaScript
-- ES6 Syntax.
-- webpack.
+- HTML, CSS & JS
+- Hint, Stylelint, Eslint
+- Frameworks
+  -bootstrap
+  -webpack
 
 ## Live Demo
 
@@ -26,8 +26,8 @@ To get a local copy up and running follow these setup steps.
 
 **Setup**
 
-- Open terminal and clone the project: `git clone git@github.com:Mo7amedSMahdi/art-institute-chicago-api.git`
-- cd into the directory `art-institute-chicago-api`
+- Open terminal and clone the project: `https://github.com/Melaku05/JavaScript-capstone-project.git`
+- cd into the directory `JavaScript-capstone-project`
 
 **Prerequisites**
 
@@ -47,7 +47,7 @@ To get a local copy up and running follow these setup steps.
 npm run build
 ```
 
-- In case you run into any errors please raise an [issue](https://github.com/Mo7amedSMahdi/art-institute-chicago-api/issues).
+- In case you run into any errors please raise an [issue](https://github.com/Melaku05/JavaScript-capstone-project/issues).
 
 **Usage**
 
@@ -92,4 +92,4 @@ Give a ⭐️ if you like this project!
 
 ## Credit
 
-The original Api that we use to retrive the artworks data from is [JavaScript capstone project]
+This project is [MIT](./MIT.md) licensed.
