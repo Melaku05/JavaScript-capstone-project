@@ -19,9 +19,6 @@ body {
 .navbar {
   display: flex;
   align-items: center;
-  width: 75%;
-  margin: 0 4%;
-  padding: 1rem 0.5rem;
 }
 
 .links {
@@ -31,7 +28,7 @@ body {
 .link-lists {
   display: flex;
   list-style: none;
-  margin-left: 280%;
+  margin-left: 230%;
 }
 
 .link-lists > *:not(:last-child) {
@@ -116,7 +113,7 @@ footer {
 .heart {
   width: 100px;
   height: 100px;
-  background: 
+  background:
     url('https://cssanimation.rocks/images/posts/steps/heart.png')
     no-repeat;
   background-position: 0 0;
@@ -171,4 +168,28 @@ footer {
   height: 100vh;
   position: absolute;
   z-index: 99999999;
+}
+
+@media screen and (max-width: 1024px) {
+  .grid-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 6em;
+  }
+}
+
+@media screen  and (max-width: 768px) {
+  .grid-cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 6em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .grid-cards-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 6em;
+  }
 }
