@@ -17,9 +17,8 @@ Gallerioni movies
   -webpack
 
 ## Live Demo
-![Uploading localhost_8080_ (1).png…]()
-![Uploading localhost_8080_(iPhone SE).png…]()
-
+![localhost_8080_ (1)](https://user-images.githubusercontent.com/91287179/200009092-c2858a54-1892-4958-a607-cbd1744165b2.png)
+![localhost_8080_(iPhone SE)](https://user-images.githubusercontent.com/91287179/200009097-3acaa088-4f79-441e-9d60-68109ec0508f.png)
 
 ## Getting Started
 
