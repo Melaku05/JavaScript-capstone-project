@@ -1,10 +1,10 @@
 /* eslint-disable comma-dangle */
 import './css/style.css';
 import './css/comment.css';
-import getData, { addLikes, likeCount } from './js/api';
-import createCardItem from './js/createCardItem';
-import displayTvShownumbers from './js/itemsCounter';
-import enableComments from './js/CommentPopup';
+import getData, { addLikes, likeCount } from './js/api.js';
+import createCardItem from './js/createCardItem.js';
+import displayTvShownumbers from './js/itemsCounter.js';
+import enableComments from './js/CommentPopup.js';
 
 document.addEventListener('click', async (e) => {
   if (e.target.matches('.heart')) {
