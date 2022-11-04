@@ -1,4 +1,4 @@
-import updateTotalCommentsCount, { fetchMovieComments } from './commentCounter';
+import updateTotalCommentsCount, { fetchMovieComments } from './commentCounter.js';
 
 const url1 = 'https://api.tvmaze.com/shows';
 const commentsEndpoint = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/DWcDAh13W8mhMfudWgwK/comments';
